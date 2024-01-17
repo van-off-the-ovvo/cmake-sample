@@ -66,6 +66,7 @@
     {
       "name": "linux-debug",
       "displayName": "Linux Debug",
+      "inherits": "vcpkg",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/out/build/${presetName}",
       "installDir": "${sourceDir}/out/install/${presetName}",
