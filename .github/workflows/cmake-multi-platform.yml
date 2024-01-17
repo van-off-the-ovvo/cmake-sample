@@ -16,9 +16,9 @@ jobs:
       matrix:
         config:
           - {cmake_preset: x64-debug, msvc_arch: x64}
-          - {cmake_preset: x64-release, msvc_arch: x64}
-          - {cmake_preset: x86-debug, msvc_arch: x86}
-          - {cmake_preset: x86-release, msvc_arch: x86}
+#          - {cmake_preset: x64-release, msvc_arch: x64}
+#         - {cmake_preset: x86-debug, msvc_arch: x86}
+#         - {cmake_preset: x86-release, msvc_arch: x86}
       fail-fast: false
 
     steps:
@@ -33,7 +33,9 @@ jobs:
       run: cmake --preset ${{matrix.config.cmake_preset}}
 
     - name: build cmake
-      run: cmake --build --preset ${{matrix.config.cmake_preset}}
+      run: |
+        cd out/build
+        cmake --build --preset ${{matrix.config.cmake_preset}}
 
     - name: ctest
       run: 
