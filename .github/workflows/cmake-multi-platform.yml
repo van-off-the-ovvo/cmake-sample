@@ -29,10 +29,11 @@ jobs:
       with:
         arch: ${{ matrix.config.msvc_arch }}
 
+    - name: cmake preset
+      run: cmake --preset ${{matrix.config.cmake_preset}}
+
     - name: build cmake
-      run: 
-        cmake --preset ${{matrix.config.cmake_preset}}
-        cmake --build --preset ${{matrix.config.cmake_preset}}
+      run: cmake --build --preset ${{matrix.config.cmake_preset}}
 
     - name: ctest
       run: 
