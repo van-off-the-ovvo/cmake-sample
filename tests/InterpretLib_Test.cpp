@@ -1,5 +1,5 @@
 #include "InterpretLib/InterpretLib.h"
-#include "Gtest/gtest.h"
+#include <Gtest/gtest.h>
 
 TEST(InterpretTest, interpret_test1)
 {

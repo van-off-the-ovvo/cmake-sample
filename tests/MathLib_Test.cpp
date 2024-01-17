@@ -1,5 +1,5 @@
 #include "MathLib/MathLib.h"
-#include "Gtest/gtest.h"
+#include <Gtest/gtest.h>
 
 TEST(MathTest, add_int_test1)
 {
