@@ -2,7 +2,8 @@
 # and include sub-projects here.
 #
 
-cmake_minimum_required (VERSION 3.12)
+cmake_minimum_required (VERSION 3.21)
+
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -16,10 +17,12 @@ include(CTest)
 
 find_package(Boost REQUIRED )
 
-
+set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
 # Include sub-projects.
 add_subdirectory ("CMakeProject1")
 add_subdirectory ("MathLib")
 add_subdirectory ("InterpretLib")
 add_subdirectory ("tests")
+
