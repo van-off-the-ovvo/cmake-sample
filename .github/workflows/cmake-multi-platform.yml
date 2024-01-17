@@ -9,13 +9,14 @@ on:
     branches: [ "main" ]
 
 jobs:
-  windows-cmake-build:
-    runs-on: windows-latest
-
+  cmake-build:
+    runs-on: ${{ matrix.config.os }}
     strategy:
       matrix:
         config:
-          - {cmake_preset: x64-debug, msvc_arch: x64}
+          # - {os: windows-latest,cmake_preset: x64-debug, msvc_arch: x64}
+          - {os: windows-latest,cmake_preset: x64-debug}
+          - {os: ubuntu-latest,cmake_preset: x64-debug}
 #          - {cmake_preset: x64-release, msvc_arch: x64}
 #         - {cmake_preset: x86-debug, msvc_arch: x86}
 #         - {cmake_preset: x86-release, msvc_arch: x86}
@@ -24,10 +25,15 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       
-    - name: Initialize MSVC Developer Command Prompt
-      uses: ilammy/msvc-dev-cmd@v1
-      with:
-        arch: ${{ matrix.config.msvc_arch }}
+    # - name: Initialize MSVC Developer Command Prompt
+    #   uses: ilammy/msvc-dev-cmd@v1
+    #   with:
+    #     arch: ${{ matrix.config.msvc_arch }}
+
+    - uses: lukka/get-cmake@latest
+
+    - name: Setup vcpkg
+      uses: lukka/run-vcpkg@v11
 
     - name: cmake preset
       run: |
@@ -38,7 +44,9 @@ jobs:
       run: 
         ctest out/build/${{matrix.config.cmake_preset}}
       
-  
+
+
+
   
 
 
