@@ -32,11 +32,11 @@ jobs:
     - name: cmake preset
       run: |
         cmake --preset ${{matrix.config.cmake_preset}}
-        cmake --build --preset ${{matrix.config.cmake_preset}}
+        cmake --build out/build/${{matrix.config.cmake_preset}}
 
     - name: ctest
       run: 
-        ctest --preset ${{matrix.config.cmake_preset}}
+        ctest out/build/${{matrix.config.cmake_preset}}
       
   
   
