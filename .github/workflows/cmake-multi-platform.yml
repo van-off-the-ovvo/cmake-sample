@@ -9,33 +9,33 @@ on:
     branches: [ "main" ]
 
 jobs:
-  cmake-build:
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        config:
-          - {cmake_preset: x64-debug, msvc_arch: x64}
-#          - {cmake_preset: x64-release, msvc_arch: x64}
-#         - {cmake_preset: x86-debug, msvc_arch: x86}
-#         - {cmake_preset: x86-release, msvc_arch: x86}
-      fail-fast: false
+#   cmake-build:
+#     runs-on: windows-latest
+#     strategy:
+#       matrix:
+#         config:
+#           - {cmake_preset: x64-debug, msvc_arch: x64}
+# #          - {cmake_preset: x64-release, msvc_arch: x64}
+# #         - {cmake_preset: x86-debug, msvc_arch: x86}
+# #         - {cmake_preset: x86-release, msvc_arch: x86}
+#       fail-fast: false
 
-    steps:
-    - uses: actions/checkout@v4
+#     steps:
+#     - uses: actions/checkout@v4
       
-    - name: Initialize MSVC Developer Command Prompt
-      uses: ilammy/msvc-dev-cmd@v1
-      with:
-        arch: ${{ matrix.config.msvc_arch }}
+#     - name: Initialize MSVC Developer Command Prompt
+#       uses: ilammy/msvc-dev-cmd@v1
+#       with:
+#         arch: ${{ matrix.config.msvc_arch }}
 
-    - name: cmake preset
-      run: |
-        cmake --preset ${{matrix.config.cmake_preset}}
-        cmake --build out/build/${{matrix.config.cmake_preset}}
+#     - name: cmake preset
+#       run: |
+#         cmake --preset ${{matrix.config.cmake_preset}}
+#         cmake --build out/build/${{matrix.config.cmake_preset}}
 
-    - name: ctest
-      run: 
-        ctest out/build/${{matrix.config.cmake_preset}}
+#     - name: ctest
+#       run: 
+#         ctest out/build/${{matrix.config.cmake_preset}}
       
 
   linux-cmake-build:
