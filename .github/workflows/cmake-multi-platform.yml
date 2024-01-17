@@ -16,7 +16,7 @@ jobs:
         config:
           # - {os: windows-latest,cmake_preset: x64-debug, msvc_arch: x64}
           - {os: windows-latest,cmake_preset: x64-debug}
-          - {os: ubuntu-latest,cmake_preset: x64-debug}
+          - {os: ubuntu-latest,cmake_preset: linux-debug}
 #          - {cmake_preset: x64-release, msvc_arch: x64}
 #         - {cmake_preset: x86-debug, msvc_arch: x86}
 #         - {cmake_preset: x86-release, msvc_arch: x86}
