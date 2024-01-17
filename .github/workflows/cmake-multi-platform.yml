@@ -41,6 +41,7 @@ jobs:
   linux-cmake-build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - uses: lukka/get-cmake@latest
 
     - name: Setup vcpkg
@@ -48,12 +49,12 @@ jobs:
 
     - name: cmake preset
       run: |
-        cmake --preset ${{matrix.config.cmake_preset}}
-        cmake --build out/build/${{matrix.config.cmake_preset}}
+        cmake --preset linux-debug
+        cmake --build out/build/linux-debug
 
     - name: ctest
       run: 
-        ctest out/build/${{matrix.config.cmake_preset}}
+        ctest out/build/linux-debug
 
 
 
