@@ -7,7 +7,7 @@ target_link_libraries(lib_tests PUBLIC MathLib PRIVATE InterpretLib GTest::gtest
 
 add_test(NAME lib_tests COMMAND lib_tests)
 
-if(msvc)
+if(MSVC)
   add_custom_command(TARGET lib_tests POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:lib_tests> $<TARGET_FILE_DIR:lib_tests>
     COMMAND_EXPAND_LISTS
