@@ -34,7 +34,7 @@ jobs:
         cmake --build out/build/${{matrix.config.cmake_preset}}
 
     - name: ctest
-      run: 
+      run: |
         cd out/build/${{matrix.config.cmake_preset}}
         ctest 
       
