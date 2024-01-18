@@ -47,10 +47,10 @@ jobs:
     - name: Setup vcpkg
       uses: lukka/run-vcpkg@v11
 
-    - name: cmake preset
+    - name: cmake preset and build
       run: |
         cmake --preset linux-debug
-        cmake --build out/build/linux-debug
+        cmake --build out/build/linux-debug -v
 
     - name: ctest
       run: 
