@@ -25,6 +25,9 @@ jobs:
       FEED_URL: https://nuget.pkg.github.com/van-off-the-ovvo/index.json
       VCPKG_BINARY_SOURCES: "clear;nuget,https://nuget.pkg.github.com/van-off-the-ovvo/index.json,readwrite"
       VCPKG_USE_NUGET_CACHE: 1
+      X_VCPKG_ASSET_SOURCES: "clear;x-script,${{ github.workspace }}/asset-provider.bat {url} {sha512} {dst};x-block-origin"
+      NUGET: "C:/path/to/nuget.exe"
+      VCPKG_KEEP_ENV_VARS: "NUGET"
 
 
     steps:
@@ -47,14 +50,14 @@ jobs:
     - name: Add NuGet sources
       shell: pwsh
       run: |
-        .$(vcpkg fetch nuget) `
+        nuget `
           sources add `
           -Source "${{ env.FEED_URL }}" `
           -StorePasswordInClearText `
           -Name GitHubPackages `
           -UserName "${{ env.USERNAME }}" `
           -Password "${{ secrets.VCPKG_CACHE_TEST }}"
-        .$(vcpkg fetch nuget) `
+        nuget `
           setapikey "${{ secrets.VCPKG_CACHE_TEST }}" `
           -Source "${{ env.FEED_URL }}"
 

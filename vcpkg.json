@@ -4,7 +4,7 @@
   "dependencies": [
     {
       "name": "gtest",
-      "version": "1.14.0"
+      "version>=": "1.14.0"
     }
   ],
   "builtin-baseline": "57fee154cc4068542740b4b5775343d9fd83413e"
