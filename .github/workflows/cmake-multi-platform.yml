@@ -15,10 +15,15 @@ jobs:
       matrix:
         config:
           - {cmake_preset: x64-debug, msvc_arch: x64}
-#          - {cmake_preset: x64-release, msvc_arch: x64}
-#         - {cmake_preset: x86-debug, msvc_arch: x86}
-#         - {cmake_preset: x86-release, msvc_arch: x86}
+          - {cmake_preset: x64-release, msvc_arch: x64}
+          - {cmake_preset: x86-debug, msvc_arch: x86}
+          - {cmake_preset: x86-release, msvc_arch: x86}
       fail-fast: false
+
+    env: 
+      USERNAME: van-off-the-ovvo
+      FEED_URL: https://nuget.pkg.github.com/van-off-the-ovvo/index.json
+      VCPKG_BINARY_SOURCES: "clear;nuget,https://nuget.pkg.github.com/van-off-the-ovvo/index.json,readwrite"
 
     steps:
     - uses: actions/checkout@v4
@@ -27,6 +32,21 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1
       with:
         arch: ${{ matrix.config.msvc_arch }}
+
+
+    - name: Add NuGet sources
+      shell: pwsh
+      run: |
+        .$(vcpkg fetch nuget) `
+          sources add `
+          -Source "${{ env.FEED_URL }}" `
+          -StorePasswordInClearText `
+          -Name GitHubPackages `
+          -UserName "${{ env.USERNAME }}" `
+          -Password "${{ secrets.VCPKG_CACHE_TEST }}"
+        .$(vcpkg fetch nuget) `
+          setapikey "${{ secrets.VCPKG_CACHE_TEST }}" `
+          -Source "${{ env.FEED_URL }}"
 
     - name: cmake preset
       run: |
