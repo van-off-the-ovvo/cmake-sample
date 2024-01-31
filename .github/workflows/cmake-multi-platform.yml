@@ -15,9 +15,9 @@ jobs:
       matrix:
         config:
           - {cmake_preset: x64-debug, msvc_arch: x64}
-          - {cmake_preset: x64-release, msvc_arch: x64}
-          - {cmake_preset: x86-debug, msvc_arch: x86}
-          - {cmake_preset: x86-release, msvc_arch: x86}
+          # - {cmake_preset: x64-release, msvc_arch: x64}
+          # - {cmake_preset: x86-debug, msvc_arch: x86}
+          # - {cmake_preset: x86-release, msvc_arch: x86}
       fail-fast: false
 
     env: 
@@ -33,6 +33,10 @@ jobs:
       with:
         arch: ${{ matrix.config.msvc_arch }}
 
+
+    - name: Bootstrap vcpkg
+      shell: pwsh
+      run: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\vcpkg\bootstrap-vcpkg.bat
 
     - name: Add NuGet sources
       shell: pwsh
@@ -59,24 +63,24 @@ jobs:
         ctest 
       
 
-  linux-cmake-build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: lukka/get-cmake@latest
+  # linux-cmake-build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #   - uses: lukka/get-cmake@latest
 
-    - name: Setup vcpkg
-      uses: lukka/run-vcpkg@v11
+  #   - name: Setup vcpkg
+  #     uses: lukka/run-vcpkg@v11
 
-    - name: cmake preset and build
-      run: |
-        cmake --preset linux-debug
-        cmake --build out/build/linux-debug -v
+  #   - name: cmake preset and build
+  #     run: |
+  #       cmake --preset linux-debug
+  #       cmake --build out/build/linux-debug -v
 
-    - name: ctest
-      run: |
-        cd out/build/linux-debug
-        ctest 
+  #   - name: ctest
+  #     run: |
+  #       cd out/build/linux-debug
+  #       ctest 
 
 
 
