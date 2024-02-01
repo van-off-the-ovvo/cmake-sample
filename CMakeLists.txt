@@ -4,7 +4,7 @@
 
 cmake_minimum_required (VERSION 3.21)
 
-set(VCPKG_INSTALL_OPTIONS "--debug")
+# set(VCPKG_INSTALL_OPTIONS "--debug")
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)

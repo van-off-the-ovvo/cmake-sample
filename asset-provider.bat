@@ -19,5 +19,5 @@ if exist %_sha512%.1.0.0 (
     curl.exe -L %url% --create-dirs --output %dst%
     REM Replace with the correct path
     %NUGET% pack ./asset-source.nuspec -BasePath %~dp3 -Properties "sha=%_sha512%;file=%dst%" -OutputDirectory %TEMP%
-    %NUGET% push -ApiKey az -SkipDuplicate %TEMP%\%_sha512%.1.0.0.nupkg -Source https://nuget.pkg.github.com/van-off-the-ovvo/index.json
+    %NUGET% push -SkipDuplicate %TEMP%\%_sha512%.1.0.0.nupkg -Source https://nuget.pkg.github.com/van-off-the-ovvo/index.json
 )
