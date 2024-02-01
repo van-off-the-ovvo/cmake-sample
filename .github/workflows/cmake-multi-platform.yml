@@ -23,7 +23,7 @@ jobs:
     env: 
       USERNAME: vvo@milestone.dk
       FEED_URL: https://nexus.milestone.dev/repository/experimental-nuget/
-      VCPKG_BINARY_SOURCES: "clear;nuget,https://nuget.pkg.github.com/van-off-the-ovvo/index.json,readwrite"
+      VCPKG_BINARY_SOURCES: "clear;nuget,https://nexus.milestone.dev/repository/experimental-nuget/,readwrite"
       VCPKG_USE_NUGET_CACHE: 1
       # X_VCPKG_ASSET_SOURCES: "clear;x-script,${{ github.workspace }}/asset-provider.bat {url} {sha512} {dst};x-block-origin"
       # fix the nuget path here guess who's dumb
