@@ -24,7 +24,7 @@ jobs:
     env: 
       USERNAME: van-off-the-ovvo
       FEED_URL: https://nuget.pkg.github.com/van-off-the-ovvo/index.json
-      VCPKG_BINARY_SOURCES: "clear;nuget,https://nuget.pkg.github.com/van-off-the-ovvo/index.json,readwrite"
+      # VCPKG_BINARY_SOURCES: "clear;nuget,https://nuget.pkg.github.com/van-off-the-ovvo/index.json,readwrite"
       VCPKG_USE_NUGET_CACHE: 1
       X_VCPKG_ASSET_SOURCES: "clear;x-script,${{ github.workspace }}\\asset-provider.bat {url} {sha512} {dst}"
 
@@ -49,34 +49,36 @@ jobs:
         cd C:  
         dir /s nuget.exe
 
-    # - name: check vcpkg version
-    #   shell: pwsh
-    #   run: vcpkg version
+    - name: check vcpkg version
+      shell: pwsh
+      run: vcpkg version
 
 
-    # - name: Add NuGet sources
-    #   shell: pwsh
-    #   run: |
-    #     nuget `
-    #       sources add `
-    #       -Source "${{ env.FEED_URL }}" `
-    #       -StorePasswordInClearText `
-    #       -Name GitHubPackages `
-    #       -UserName "${{ env.USERNAME }}" `
-    #       -Password "${{ secrets.VCPKG_CACHE_TEST }}"
-    #     nuget `
-    #       setapikey "${{ secrets.VCPKG_CACHE_TEST }}" `
-    #       -Source "${{ env.FEED_URL }}"
+    - name: Add NuGet sources
+      shell: pwsh
+      run: |
+        nuget `
+          sources add `
+          -Source "${{ env.FEED_URL }}" `
+          -StorePasswordInClearText `
+          -Name GitHubPackages `
+          -UserName "${{ env.USERNAME }}" `
+          -Password "${{ secrets.VCPKG_CACHE_TEST }}"
+        nuget `
+          setapikey "${{ secrets.VCPKG_CACHE_TEST }}" `
+          -Source "${{ env.FEED_URL }}"
 
-    # - name: cmake preset
-    #   run: |
-    #     cmake --preset ${{matrix.config.cmake_preset}}
-    #     cmake --build out/build/${{matrix.config.cmake_preset}}
+    - name: cmake preset
+      run: cmake --preset ${{matrix.config.cmake_preset}}
+        
+      
+    - name: cmake build 
+      run: cmake --build out/build/${{matrix.config.cmake_preset}}
 
-    # - name: ctest
-    #   run: |
-    #     cd out/build/${{matrix.config.cmake_preset}}
-    #     ctest 
+    - name: ctest
+      run: |
+        cd out/build/${{matrix.config.cmake_preset}}
+        ctest 
       
 
   # linux-cmake-build:
