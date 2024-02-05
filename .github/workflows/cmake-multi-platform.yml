@@ -33,10 +33,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       
-    # - name: Initialize MSVC Developer Command Prompt
-    #   uses: ilammy/msvc-dev-cmd@v1
-    #   with:
-    #     arch: ${{ matrix.config.msvc_arch }}
+    - name: Initialize MSVC Developer Command Prompt
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: ${{ matrix.config.msvc_arch }}
 
     - name: check nuget
       shell: pwsh
