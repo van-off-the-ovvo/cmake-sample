@@ -44,8 +44,9 @@ jobs:
         nuget help
     
     - name:
+      shell: cmd
       run: |
-        cd C:/  
+        cd C:  
         dir /s nuget.exe
 
     # - name: check vcpkg version
