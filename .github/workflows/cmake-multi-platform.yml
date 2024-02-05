@@ -41,7 +41,7 @@ jobs:
     - name: check nuget
       shell: pwsh
       run: |
-        C:\nuget.exe help
+        nuget
     
 
     - name: check vcpkg version
