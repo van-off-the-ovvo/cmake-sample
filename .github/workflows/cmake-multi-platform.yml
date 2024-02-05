@@ -41,8 +41,10 @@ jobs:
     - name: check nuget
       shell: pwsh
       run: |
-        nuget
-        $env:path
+        nuget help
+    
+    - name:
+      run: dir /s nuget.exe
 
     # - name: check vcpkg version
     #   shell: pwsh
