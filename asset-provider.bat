@@ -7,8 +7,8 @@ set "_sha512=%sha512:~0,90%"
 
 cd /d %~dp3
 
-echo nuget 
-nuget install %sha512:~0,90% -Source https://nuget.pkg.github.com/van-off-the-ovvo/index.json
+echo %NUGET%
+%NUGET% install %sha512:~0,90% -Source https://nuget.pkg.github.com/van-off-the-ovvo/index.json
 echo.
 if exist %_sha512%.1.0.0 (
     echo "Pull from the NuGet feed"
@@ -20,6 +20,6 @@ if exist %_sha512%.1.0.0 (
     echo "Fetch from the url"
     curl.exe -L %url% --create-dirs --output %dst%
     REM Replace with the correct path
-    nuget pack ./asset-source.nuspec -BasePath %~dp3 -Properties "sha=%_sha512%;file=%dst%" -OutputDirectory %TEMP%
-    nuget push -SkipDuplicate %TEMP%\%_sha512%.1.0.0.nupkg -Source https://nuget.pkg.github.com/van-off-the-ovvo/index.json
+    %NUGET% pack ./asset-source.nuspec -BasePath %~dp3 -Properties "sha=%_sha512%;file=%dst%" -OutputDirectory %TEMP%
+    %NUGET% push -SkipDuplicate %TEMP%\%_sha512%.1.0.0.nupkg -Source https://nuget.pkg.github.com/van-off-the-ovvo/index.json
 )
