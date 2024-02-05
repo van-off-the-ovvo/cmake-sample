@@ -39,9 +39,9 @@ jobs:
         arch: ${{ matrix.config.msvc_arch }}
 
     - name: check nuget
-      shell: pwsh
+      shell: cmd
       run: |
-        nuget
+        where nuget
     
 
     - name: check vcpkg version
