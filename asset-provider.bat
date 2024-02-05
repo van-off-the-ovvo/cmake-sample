@@ -6,6 +6,8 @@ set "_dst=%dst:/=\%"
 set "_sha512=%sha512:~0,90%"
 
 cd /d %~dp3
+
+echo nuget 
 nuget install %sha512:~0,90% -Source https://nuget.pkg.github.com/van-off-the-ovvo/index.json
 echo.
 if exist %_sha512%.1.0.0 (
