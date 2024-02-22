@@ -7,6 +7,9 @@ set "_sha512=%sha512:~0,90%"
 
 cd /d %~dp3
 
+echo url: %url%
+echo dst: %dst%
+
 echo %NUGET%
 %NUGET% install %sha512:~0,90% -Source https://nuget.pkg.github.com/van-off-the-ovvo/index.json
 echo.
