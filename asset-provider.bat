@@ -13,6 +13,8 @@ echo %NUGET%
 echo.
 if exist %_sha512%.1.0.0 (
     echo "Pull from the NuGet feed"
+    echo url: %url%
+    echo dst: %dst%
     cd %_sha512%.1.0.0
 
     REM Assume both are files not directories
