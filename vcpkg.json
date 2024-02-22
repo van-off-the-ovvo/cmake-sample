@@ -8,6 +8,9 @@
     },
     {
       "name": "pugixml"
+    },
+    {
+      "name": "openssl"
     }
   ],
   "builtin-baseline": "57fee154cc4068542740b4b5775343d9fd83413e"
