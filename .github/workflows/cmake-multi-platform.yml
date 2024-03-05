@@ -23,12 +23,12 @@ jobs:
 
     env: 
       USERNAME: van-off-the-ovvo
-      FEED_URL: https://nuget.pkg.github.com/van-off-the-ovvo/index.json
+      PACKAGE_STORAGE_URL: https://nuget.pkg.github.com/van-off-the-ovvo/index.json
       # VCPKG_BINARY_SOURCES: "clear;nuget,https://nuget.pkg.github.com/van-off-the-ovvo/index.json,readwrite"
       VCPKG_USE_NUGET_CACHE: 1
       X_VCPKG_ASSET_SOURCES: "clear;x-script,${{ github.workspace }}/asset-provider.bat {url} {sha512} {dst}"
       NUGET: "C:/ProgramData/Chocolatey/bin/nuget.exe"
-      VCPKG_KEEP_ENV_VARS: "NUGET"
+      VCPKG_KEEP_ENV_VARS: "NUGET; VCPKG_KEEP_ENV_VARS"
 
 
 

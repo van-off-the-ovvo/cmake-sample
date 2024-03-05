@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>$sha$</id>
-        <version>1.0.0</version>
-        <description>vcpkg download asset</description>
-        <authors>vcpkg</authors>
+        <id>vcpkg_cached_assets</id>
+        <version>$sha$</version>
+        <description>vcpkg cached asset</description>
+        <authors>DeviceCommunicationService</authors>
     </metadata>
     <files>
         <file src="$file$" />
