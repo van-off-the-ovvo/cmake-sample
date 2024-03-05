@@ -57,14 +57,14 @@ jobs:
       run: |
         nuget `
           sources add `
-          -Source "${{ env.FEED_URL }}" `
+          -Source "${{ env.PACKAGE_STORAGE_URL }}" `
           -StorePasswordInClearText `
           -Name GitHubPackages `
           -UserName "${{ env.USERNAME }}" `
           -Password "${{ secrets.VCPKG_CACHE_TEST }}"
         nuget `
           setapikey "${{ secrets.VCPKG_CACHE_TEST }}" `
-          -Source "${{ env.FEED_URL }}"
+          -Source "${{ env.PACKAGE_STORAGE_URL }}"
 
     - name: cmake preset
       run: cmake --preset ${{matrix.config.cmake_preset}}
