@@ -10,7 +10,7 @@ cd /d %~dp3
 
 
 echo %NUGET%
-%NUGET% install %vcpkg_name% -Version %sha512:~0,90% -Source %PACKAGE_STORAGE_URL%
+%NUGET% install %vcpkg_name% -Version 1.0.0-%sha512:~0,90% -Source %PACKAGE_STORAGE_URL%
 echo.
 if exist %nuget_name%.1.0.0-%_sha512% (
     echo "Pull from the NuGet feed"
@@ -27,5 +27,5 @@ if exist %nuget_name%.1.0.0-%_sha512% (
     curl.exe -L %url% --create-dirs --output %dst%
     REM Replace with the correct path
     %NUGET% pack %~dp0/asset-source.nuspec -BasePath %~dp3 -Properties "sha=%_sha512%;file=%dst%" -OutputDirectory %TEMP%
-    %NUGET% push -SkipDuplicate %TEMP%\%_sha512%.1.0.0.nupkg -Source %PACKAGE_STORAGE_URL%
+    %NUGET% push -SkipDuplicate %TEMP%\%nuget_name%.1.0.0-%_sha512%.nupkg -Source %PACKAGE_STORAGE_URL%
 )
