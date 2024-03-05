@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>vcpkg_cached_assets</id>
-        <version>$sha$</version>
+        <version>1.0.0-$sha$</version>
         <description>vcpkg cached asset</description>
         <authors>DeviceCommunicationService</authors>
     </metadata>

@@ -12,11 +12,11 @@ cd /d %~dp3
 echo %NUGET%
 %NUGET% install %vcpkg_name% -Version %sha512:~0,90% -Source %PACKAGE_STORAGE_URL%
 echo.
-if exist %nuget_name%.%_sha512% (
+if exist %nuget_name%.1.0.0-%_sha512% (
     echo "Pull from the NuGet feed"
     echo url: %url%
     echo dst: %dst%
-    cd %nuget_name%.%_sha512%
+    cd %nuget_name%.1.0.0-%_sha512%
 
     REM Assume both are files not directories
     echo "F" | xcopy /f *.part %_dst%
