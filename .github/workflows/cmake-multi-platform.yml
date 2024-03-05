@@ -28,7 +28,7 @@ jobs:
       VCPKG_USE_NUGET_CACHE: 1
       X_VCPKG_ASSET_SOURCES: "clear;x-script,${{ github.workspace }}/asset-provider.bat {url} {sha512} {dst}"
       NUGET: "C:/ProgramData/Chocolatey/bin/nuget.exe"
-      VCPKG_KEEP_ENV_VARS: "NUGET; PACKAGE_STORAGE_URL"
+      VCPKG_KEEP_ENV_VARS: "NUGET;PACKAGE_STORAGE_URL"
 
 
 
